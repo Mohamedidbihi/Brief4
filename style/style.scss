@@ -1,0 +1,212 @@
+
+//Colors
+
+@import 'style-gather/variable';
+
+//Header
+
+@import 'style-gather/header-style';
+
+//Default
+
+@import 'style-gather/default';
+
+//Table
+
+@import 'style-gather/Tableau';
+
+//Forms
+
+@import 'style-gather/forms';
+
+//popup
+
+@import 'style-gather/Popup';
+
+//login
+@import 'style-gather/Login';
+
+
+
+#But {
+    color: white;
+    border: none;
+    border-radius: 12px;
+    height: 40px;
+    width: 80%;
+    background-image: $button-color;
+	&:hover {
+		color: black;
+	  }
+}
+img
+{
+    cursor: pointer;
+}
+.blank {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.c
+{
+
+ select {
+    width: 180px;
+    padding: 12px;
+    border: 1px solid rgb(101, 101, 173);
+    border-radius: 4px;
+    resize: vertical;
+    color: #000;
+  }
+  input[type=text]
+  {
+    width:  180px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=submit]
+  {
+  border-radius: 5px;
+  border: none;
+  margin-right: 100px;
+  margin-top: 10px;
+  width:180px ;
+  height: 40px;
+  cursor: pointer;
+  background-image: $return-button;
+  color: white;
+}
+}
+
+
+footer {
+    font-size: 0.7rem;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: $primary-color;
+	span{
+		font-size: 14px;
+		 color: #fff;;
+	}
+}
+
+.rightbottom
+{
+	cursor: pointer;
+	padding-right: 50px;
+	float: right;
+	text-decoration: underline;
+}
+.container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 120px 10px 40px 30px;
+
+
+
+    .col {
+        float: left;
+        width: 24%;
+        height: 550px;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        border: 2px solid $primary-color;
+
+
+
+        .img {
+            width: 80%;
+            height: 40%;
+        }
+
+        .imgaddprof {
+            width: 71%;
+            cursor: pointer;
+			fill: red;
+        }
+
+    }
+    .Cont
+    {
+       display: block;
+       width: 24%;
+       height: 565px;
+       padding: 0 8px;
+       
+
+    .colA {
+        float: left;
+        height: 350px;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        border: 2px solid $primary-color;
+        .img {
+            width: 40%;
+            height: 20%;
+        }
+    }
+    .colB {
+        float: left;
+        height: 184px;
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        border: 2px solid $primary-color;
+    }
+    }
+
+    .col2 {
+        float: left;
+        width: 50%;
+        height: 550px;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        border: $primary-color 4px;
+        border: 2px solid $primary-color;
+
+        .line {
+            margin-top: 20px;
+            border-radius: 16px;
+            width: 100%;
+            height: 40px;
+            background-color: $primary-color;
+            ;
+
+            .Module {
+                padding-right: 30px;
+                float: right;
+            }
+
+            .filiere {
+                padding-left: 20px;
+                right: inherit;
+            }
+
+            span {
+                color: white;
+            }
+        }
+}
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+        .col {
+            width: 49%;
+
+        }
+        .col2 {
+            width: 100%;
+        }
+        .Cont
+        {
+            width: 49%;
+        }
+    }
+}
