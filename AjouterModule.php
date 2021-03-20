@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
+    <script src="./JS/regex.js" ></script>
     <title>Ajouter Module</title>
 </head>
 <body>
@@ -32,8 +33,9 @@
             <label for="subject">Module</label>
           </div>
           <div class="col-75">
-            <input type="Text" id="module" name="Module" placeholder="Module.." >
+            <input type="Text" id="module" onkeyup="validateFiliereModule()" name="Module" placeholder="Module.." >
           </div>
+          <span id="checker6"></span><br>
         </div>
           <div class="blank"></div>
         <div class="row">

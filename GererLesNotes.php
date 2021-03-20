@@ -1,3 +1,12 @@
+<?php
+require_once ("Connect.php");
+    session_start();
+
+    if(empty($_SESSION['iduser']))
+    {     
+        header("location:login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +25,7 @@
             <li><a href="GererEtudiant.php">Gerer les Etudiants</a></li>
             <div class="active"><li><a href="#home">Gerer les Notes</a></li></div>
             <li><a href="GererFiliereModule.php">Gerer les Modules</a></li>
-            <li><a href="Login.php">Deconnexion</a></li>
+            <li><a href="Deconnexion.php">Deconnexion</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
@@ -51,55 +60,26 @@
                 <th >Note</th>
                 <th  colspan="2">Action</th>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">FrontEnd</td>
-                <td  >Html&Css</td>
-                <td>10</td>
-                <td ><a href="ModifierNote.php"><img src="img/icons8-edit-40.png" ></a>
-              <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></td> 
+              <?php
+               $query=" SELECT etudiant.Idetudiant,exam.idm,user.PRENOM,user.NOM,filiere.Lebelle as 'Filiere',module.LebelleM as 'Module',exam.note  FROM user,module,filiere,exam,etudiant  WHERE etudiant.Idetudiant=exam.ide AND exam.idm=module.IdM AND filiere.IdF=module.idf and user.IdUser=etudiant.iduser";
+                $result=mysqli_query($con,$query);
+                while($row=$result->fetch_assoc()){ ?>
+              <tr >
+                <td><?php echo $row["Idetudiant"] ?></td>
+                <td><?php echo $row["PRENOM"] ?></td>
+                <td><?php echo $row["NOM"] ?></td>
+                <td style="display:none"><?php echo $row["idm"] ?></td>
+                <td class="hide"><?php echo $row["Filiere"] ?></td>
+                <td><?php echo $row["Module"] ?></td>
+                <td><?php echo $row["note"] ?></td>
+                <td ><a href="Processe.php?upnote=<?php echo $row['Idetudiant'];?>&idm=<?php echo $row['idm'];?>"><img src="img/icons8-edit-40.png" name="upnote" ></a>
+                <a href="Processe.php?delnote=<?php echo $row['Idetudiant'];?>&idm=<?php echo $row['idm'];?>" > <img src="img/icons8-delete-bin-64.png" name="delnote" id="button"></a></td> 
               </tr>
-              <tr>
-                <td>1</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">FrontEnd</td>
-                <td  >Sass</td>
-                <td>12</td>
-                <td ><a href="ModifierNote.php"><img src="img/icons8-edit-40.png" ></a>
-                <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></td> 
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">BackEnd</td>
-                <td  >MySql</td>
-                <td>14</td>
-                <td ><a href="ModifierNote.php"><img src="img/icons8-edit-40.png" ></a>
-                <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></a></td> 
-              </tr>
+              <?php    }?> 
+             
             </table>
           </div>
     </div>
-
-    
-                <!-- popup -->
-
-                <div id="popup" style="display: none">
-                  <div id="popup-content">
-                    <div id="close"> <span id="sp">Confirmer la supression </span> &times;</div>
-                    <hr>
-                    <p>Etes vous sur de vouloir supprimer cet element?</p>
-                    </br>
-                    <center><button type="button" id="button">Oui</button></center>
-                  </div>
-                </div>
-            <script src="./JS/Delete-Popup.js"></script>
-        
-                <!-- end popup -->
-                <?php include"footer.php" ?>
+    <?php include"footer.php" ?>
 </body>
 </html>

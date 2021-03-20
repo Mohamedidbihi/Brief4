@@ -43,6 +43,7 @@ require_once ("Connect.php");
                 $query="SELECT *  FROM user u,formateur f  where u.IdUser = '".$_SESSION["iduser"]."' and u.IdUser=f.IdUser ";
                 $result = $con->query($query);
                 $row = $result->fetch_assoc(); 
+                
             ?>
                 <p>Prenom :<?php echo $row["PRENOM"] ?></p><br>
                 <p>Nom :<?php echo $row["NOM"] ?></p><br>
@@ -56,23 +57,27 @@ require_once ("Connect.php");
         <div class="col">
             <center> <img src="img/unknown2.png" class="img"></center>
             <hr>
+            <?php
+                $query="SELECT C.Nom,C.Ville FROM USER u,formateur f, campus C WHERE u.idUser=f.idUser  AND f.idcampus=C.idC AND u.idUser='".$_SESSION["iduser"]."' "; 
+                $result = $con->query($query);
+                $row = $result->fetch_assoc(); 
+            ?>
             <div class="blank"></div>
             <center><strong>Richard University</strong></center>
             <div class="blank"></div>
             <center>
-                <p id="nomCampus">Nom campus</p>
+                <p id="nomCampus">Nom campus: <?php echo $row["Nom"] ?></p>
+                <p id="nomCampus">Ville: <?php echo $row["Ville"] ?></p>
             </center>
         </div>
         <div class="col2">
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
-            <div class="line"><span class="filiere"> Filiere :</span><span class="Module"> Module :</span></div>
+        <?php
+                $query="SELECT * FROM module m ,filiere f, user u , formateur fr WHERE u.IdUser=fr.IdUser and f.IdF=m.idf AND fr.IdF=f.idformateur AND u.IdUser='".$_SESSION["iduser"]."'GROUP BY m.LebelleM";   
+                $result=mysqli_query($con,$query);
+                while($row=$result->fetch_assoc()){ ?>
+            <div class="line"><span class="filiere"> Filiere : <?php echo $row["Lebelle"] ?></span><span class="Module"> Module :<?php echo $row["LebelleM"] ?></span></div>
+        
+            <?php    }?> 
         </div>
     </div>
     <?php include"footer.php" ?>

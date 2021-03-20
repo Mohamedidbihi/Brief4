@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
+    <script src="./JS/regex.js" ></script>
     <title>Ajouter Note</title>
 </head>
 <body>
@@ -19,8 +20,9 @@
             <label for="IdE">IdEtudiant</label>
           </div>
           <div class="col-75">
-            <input type="text" id="Id" name="Id" placeholder="Id de l'etudiant">
+            <input type="text" id="Id" onkeyup="validateId()" name="Id" placeholder="Id de l'etudiant">
           </div>
+          <span id="checker7"></span><br>
         </div>
         <div class="row">
           <div class="col-25">
@@ -53,8 +55,9 @@
             <label for="subject">Note</label>
           </div>
           <div class="col-75">
-            <input type="number" id="note" name="Note" placeholder="La note" min="0" max="20">
+            <input type="number" id="note" onkeyup="validateNote()" name="Note" placeholder="La note" min="0" max="20">
           </div>
+          <span id="checker8"></span><br>
         </div>
           <div class="blank"></div>
         <div class="row">

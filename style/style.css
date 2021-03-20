@@ -352,73 +352,6 @@ h1 {
   }
 }
 
-#popup {
-  position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-#popup-content {
-  color: black;
-  background: white;
-  border: 2px solid gray;
-  width: 600px;
-  border-radius: 8px;
-}
-
-#popup-content p {
-  padding-top: 20px;
-  color: black;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-#popup-content #close {
-  text-align: right;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-right: 10px;
-  font-size: 20px;
-  background: white;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-#popup-content #close #sp {
-  color: #3385D9;
-  float: left;
-}
-
-#popup-content #popup-content p {
-  padding: 24px;
-  margin-top: 10px;
-  color: black;
-}
-
-#popup-content #button {
-  color: white;
-  width: 70px;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#3385D9), to(#8275ce));
-  background-image: linear-gradient(to bottom right, #3385D9, #8275ce);
-}
-
 .wave {
   position: fixed;
   bottom: 0;
@@ -774,8 +707,8 @@ footer span {
 }
 
 .container .Cont .colA {
-  float: left;
   height: 350px;
+  width: 100%;
   margin-bottom: 16px;
   padding: 0 8px;
   border: 2px solid #3385D9;
@@ -793,6 +726,7 @@ footer span {
   margin-bottom: 16px;
   padding: 0 8px;
   border: 2px solid #3385D9;
+  overflow-y: scroll;
 }
 
 .container .col2 {
@@ -832,7 +766,7 @@ footer span {
     width: 49%;
   }
   .container .col2 {
-    width: 100%;
+    width: 99%;
   }
   .container .Cont {
     width: 49%;

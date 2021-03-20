@@ -1,3 +1,12 @@
+<?php
+require_once ("Connect.php");
+    session_start();
+
+    if(empty($_SESSION['iduser']))
+    {     
+        header("location:login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +25,7 @@
            <div class="active"> <li><a href="#home">Gerer les Etudiants</a></li></div>
             <li><a href="GererLesNotes.php">Gerer les Notes</a></li>
             <li><a href="GererFiliereModule.php">Gerer les Modules</a></li>
-            <li><a href="Login.php">Deconnexion</a></li>
+            <li><a href="Deconnexion.php">Deconnexion</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
@@ -32,7 +41,7 @@
         <div class="Tab">
             <table>
               <tr>
-                <th>Id</th>
+                <th >Id</th>
                 <th>Prenom</th>
                 <th>Nom</th>
                 <th class="hide">Date de naissance</th>
@@ -40,54 +49,26 @@
                 <th class="hide">Mot de passe</th>
                 <th  colspan="2">Action</th>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">1998-08-31</td>
-                <td class="hide" >Medsougtani@gmail.com</td>
-                <td class="hide">Password12</td>
-                <td ><a href="ModifierEtudiant.php"><img src="img/icons8-edit-40.png" ></a>
-                <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></td> 
+              <?php
+               $query="SELECT * FROM user u where u.idrole=2";
+                $result=mysqli_query($con,$query);
+                while($row=$result->fetch_assoc()){ ?>
+             <tr>
+                <td><?php echo $row["IdUser"] ?></td>
+                <td><?php echo $row["PRENOM"] ?></td>
+                <td><?php echo $row["NOM"] ?></td>
+                <td class="hide"><?php echo $row["Dn"] ?></td>
+                <td class="hide" ><?php echo $row["email"] ?></td>
+                <td class="hide"><?php echo $row["password"] ?></td>
+                <td ><a href="Processe.php?upd=<?php echo $row['IdUser']; ?>"><img src="img/icons8-edit-40.png" name="upd" ></a>
+                <a href="Processe.php?del=<?php echo $row['IdUser']; ?>" > <img src="img/icons8-delete-bin-64.png" name="del" id="button"></a></td> 
               </tr>
-              <tr>
-                <td>2</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">1998-08-31</td>
-                <td class="hide">Medsougtani@gmail.com</td>
-                <td class="hide">Password12</td>
-                <td ><a href="ModifierEtudiant.php"><img src="img/icons8-edit-40.png" ></a>
-                <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></td> 
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>med</td>
-                <td>idbihi</td>
-                <td class="hide">1998-08-31</td>
-                <td class="hide">Medsougtani@gmail.com</td>
-                <td class="hide">Password12</td>
-                <td ><a href="ModifierEtudiant.php"><img src="img/icons8-edit-40.png" ></a>
-                <img src="img/icons8-delete-bin-64.png" onclick="delPopup()" id="button"></td> 
-              </tr>
+        
+            <?php    }?> 
+              
             </table>
           </div>
     </div>
-
-            <!-- popup -->
-
-            <div id="popup" style="display: none">
-              <div id="popup-content">
-                <div id="close"> <span id="sp">Confirmer la supression </span> &times;</div>
-                <hr>
-                <p>Etes vous sur de vouloir supprimer cet element?</p>
-                </br>
-                <center><button type="button" id="button">Oui</button></center>
-              </div>
-            </div>
-        <script src="./JS/Delete-Popup.js"></script>
-    
-            <!-- end popup -->
             <?php include"footer.php" ?>
 </body>
 </html>

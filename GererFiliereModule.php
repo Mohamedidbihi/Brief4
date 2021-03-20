@@ -16,7 +16,7 @@
             <li><a href="GererEtudiant.php">Gerer les Etudiants</a></li>
             <li><a href="GererLesNotes.php">Gerer les Notes</a></li>
             <div class="active"><li><a href="#home">Gerer les Modules</a></li></div>
-            <li><a href="Login.php">Deconnexion</a></li>
+            <li><a href="Deconnexion.php">Deconnexion</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
